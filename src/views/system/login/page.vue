@@ -15,15 +15,16 @@
         class="page-login--content"
         flex="dir:top main:justify cross:stretch box:justify">
         <div class="page-login--content-header">
-          <p class="page-login--content-header-motto">
-            时间是一切财富中最宝贵的财富
-          </p>
+<!--          <p class="page-login&#45;&#45;content-header-motto">-->
+<!--            时间是一切财富中最宝贵的财富-->
+<!--          </p>-->
         </div>
         <div
           class="page-login--content-main"
           flex="dir:top main:center cross:center">
           <!-- logo -->
-          <img class="page-login--logo" src="./image/logo@2x.png">
+<!--          <img class="page-login&#45;&#45;logo" src="./image/logo@2x.png">-->
+          <div style="font-size: 40px;margin-bottom: 20px;color: #66b1ff">后台管理</div>
           <!-- form -->
           <div class="page-login--form">
             <el-card shadow="never">
@@ -75,20 +76,20 @@
               <span>注册用户</span>
             </p>
             <!-- quick login -->
-            <el-button class="page-login--quick" size="default" type="info" @click="dialogVisible = true">
-              快速选择用户（测试功能）
-            </el-button>
+<!--            <el-button class="page-login&#45;&#45;quick" size="default" type="info" @click="dialogVisible = true">-->
+<!--              快速选择用户（测试功能）-->
+<!--            </el-button>-->
           </div>
         </div>
         <div class="page-login--content-footer">
-          <p class="page-login--content-footer-locales">
-            <a
-              v-for="language in $languages"
-              :key="language.value"
-              @click="onChangeLocale(language.value)">
-              {{ language.label }}
-            </a>
-          </p>
+<!--          <p class="page-login&#45;&#45;content-footer-locales">-->
+<!--            <a-->
+<!--              v-for="language in $languages"-->
+<!--              :key="language.value"-->
+<!--              @click="onChangeLocale(language.value)">-->
+<!--              {{ language.label }}-->
+<!--            </a>-->
+<!--          </p>-->
           <p class="page-login--content-footer-copyright">
             Copyright
             <d2-icon name="copyright"/>
@@ -105,24 +106,24 @@
         </div>
       </div>
     </div>
-    <el-dialog
-      title="快速选择用户"
-      :visible.sync="dialogVisible"
-      width="400px">
-      <el-row :gutter="10" style="margin: -20px 0px -10px 0px;">
-        <el-col v-for="(user, index) in users" :key="index" :span="8">
-          <div class="page-login--quick-user" @click="handleUserBtnClick(user)">
-            <d2-icon name="user-circle-o"/>
-            <span>{{user.name}}</span>
-          </div>
-        </el-col>
-      </el-row>
-    </el-dialog>
+<!--    <el-dialog-->
+<!--      title="快速选择用户"-->
+<!--      :visible.sync="dialogVisible"-->
+<!--      width="400px">-->
+<!--      <el-row :gutter="10" style="margin: -20px 0px -10px 0px;">-->
+<!--        <el-col v-for="(user, index) in users" :key="index" :span="8">-->
+<!--          <div class="page-login&#45;&#45;quick-user" @click="handleUserBtnClick(user)">-->
+<!--            <d2-icon name="user-circle-o"/>-->
+<!--            <span>{{user.name}}</span>-->
+<!--          </div>-->
+<!--        </el-col>-->
+<!--      </el-row>-->
+<!--    </el-dialog>-->
   </div>
 </template>
 
 <script>
-import dayjs from 'dayjs'
+// import dayjs from 'dayjs'
 import { mapActions } from 'vuex'
 import localeMixin from '@/locales/mixin.js'
 export default {
@@ -132,7 +133,8 @@ export default {
   data () {
     return {
       timeInterval: null,
-      time: dayjs().format('HH:mm:ss'),
+      // time: dayjs().format('HH:mm:ss'),
+      time: 'O C R',
       // 快速选择用户
       dialogVisible: false,
       users: [
@@ -185,20 +187,20 @@ export default {
     }
   },
   mounted () {
-    this.timeInterval = setInterval(() => {
-      this.refreshTime()
-    }, 1000)
+    // this.timeInterval = setInterval(() => {
+    //   this.refreshTime()
+    // }, 1000)
   },
   beforeDestroy () {
-    clearInterval(this.timeInterval)
+    // clearInterval(this.timeInterval)
   },
   methods: {
     ...mapActions('d2admin/account', [
       'login'
     ]),
-    refreshTime () {
-      this.time = dayjs().format('HH:mm:ss')
-    },
+    // refreshTime () {
+    //   this.time = dayjs().format('HH:mm:ss')
+    // },
     /**
      * @description 接收选择一个用户快速登录的事件
      * @param {Object} user 用户信息
@@ -224,7 +226,7 @@ export default {
           })
             .then(() => {
               // 重定向对象不存在则返回顶层路径
-              this.$router.replace(this.$route.query.redirect || '/')
+              this.$router.replace(this.$route.query.redirect || '/index')
             })
         } else {
           // 登录表单校验失败
@@ -254,7 +256,7 @@ export default {
   }
   // 时间
   .page-login--layer-time {
-    font-size: 24em;
+    font-size: 30em;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.03);
     overflow: hidden;

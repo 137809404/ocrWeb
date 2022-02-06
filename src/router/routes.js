@@ -9,7 +9,7 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 const frameIn = [
   {
     path: '/',
-    redirect: { name: 'index' },
+    redirect: { name: 'home' },
     component: layoutHeaderAside,
     children: [
       // 首页
@@ -23,31 +23,40 @@ const frameIn = [
       },
       // 演示页面
       {
-        path: 'page1',
-        name: 'page1',
+        path: 'function1',
+        name: 'function1',
         meta: {
-          title: '页面 1',
+          title: '特征点匹配模板',
           auth: true
         },
         component: _import('demo/page1')
       },
       {
-        path: 'page2',
-        name: 'page2',
+        path: 'function2',
+        name: 'function2',
         meta: {
-          title: '页面 2',
+          title: 'HSV颜色分割',
           auth: true
         },
         component: _import('demo/page2')
       },
       {
-        path: 'page3',
-        name: 'page3',
+        path: 'function3',
+        name: 'function3',
         meta: {
-          title: '页面 3',
+          title: 'OCR模型',
           auth: true
         },
         component: _import('demo/page3')
+      },
+      {
+        path: 'function3_test',
+        name: 'function3_test',
+        meta: {
+          title: 'OCR模型测试',
+          auth: true
+        },
+        component: _import('demo/page4')
       },
       // 系统 前端日志
       {
@@ -86,6 +95,11 @@ const frameOut = [
     path: '/login',
     name: 'login',
     component: _import('system/login')
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: _import('system/home')
   }
 ]
 
